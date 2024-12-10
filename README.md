@@ -3,7 +3,7 @@
 
 | Name | Version |
 |------|---------|
-| <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | >= 1.3 |
+| <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | >= 1.9 |
 | <a name="requirement_cilium"></a> [cilium](#requirement\_cilium) | ~> 0.2.0 |
 | <a name="requirement_kind"></a> [kind](#requirement\_kind) | 0.5.1 |
 
@@ -11,7 +11,7 @@
 
 | Name | Version |
 |------|---------|
-| <a name="provider_cilium.mesh1"></a> [cilium.mesh1](#provider\_cilium.mesh1) | 0.2.13 |
+| <a name="provider_cilium.mesh"></a> [cilium.mesh](#provider\_cilium.mesh) | 0.2.14 |
 
 ## Modules
 

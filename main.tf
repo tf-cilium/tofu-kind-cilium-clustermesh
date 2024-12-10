@@ -21,7 +21,7 @@ module "cilium_clustermesh1" {
   service_type    = "NodePort"
 
   providers = {
-    cilium = cilium.mesh1
+    cilium = cilium.mesh["mesh1"]
   }
 
   depends_on = [module.kind]
@@ -36,7 +36,7 @@ module "cilium_clustermesh2" {
   extra_set       = ["tls.ca.cert=${local.cert}", "tls.ca.key=${local.key}"]
 
   providers = {
-    cilium = cilium.mesh2
+    cilium = cilium.mesh["mesh2"]
   }
 
   depends_on = [module.kind]
@@ -44,7 +44,7 @@ module "cilium_clustermesh2" {
 
 resource "cilium_clustermesh_connection" "this" {
   destination_contexts = ["kind-${var.kind.mesh2.name}"]
-  provider             = cilium.mesh1
+  provider             = cilium.mesh["mesh1"]
   depends_on = [
     module.cilium_clustermesh1,
     module.cilium_clustermesh2,

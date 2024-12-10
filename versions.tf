@@ -9,17 +9,13 @@ terraform {
       version = "~> 0.2.0"
     }
   }
-  required_version = ">= 1.3"
+  required_version = ">= 1.9"
 }
 
 provider "kind" {}
 
 provider "cilium" {
-  alias   = "mesh1"
-  context = module.kind["mesh1"].context
-}
-
-provider "cilium" {
-  alias   = "mesh2"
-  context = module.kind["mesh2"].context
+  alias    = "mesh"
+  for_each = toset(keys(var.cilium))
+  context  = module.kind[each.key].context
 }
