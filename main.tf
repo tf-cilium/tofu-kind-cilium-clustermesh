@@ -1,8 +1,3 @@
-locals {
-  cert = module.cilium_clustermesh1.cilium_ca["crt"]
-  key  = module.cilium_clustermesh1.cilium_ca["key"]
-}
-
 module "kind" {
   source = "./modules/kind"
 
@@ -13,30 +8,16 @@ module "kind" {
   nodes_number   = 1
 }
 
-module "cilium_clustermesh1" {
+module "cilium_clustermesh" {
   source          = "./modules/cilium-clustermesh"
-  cluster_name    = var.kind.mesh1.name
-  cluster_id      = var.cilium.mesh1.cluster_id
-  release_version = var.cilium.mesh1.version
+  for_each        = var.kind
+  cluster_name    = each.value.name
+  cluster_id      = each.value.cilium.cluster_id
+  release_version = each.value.cilium.version
   service_type    = "NodePort"
 
   providers = {
-    cilium = cilium.mesh["mesh1"]
-  }
-
-  depends_on = [module.kind]
-}
-
-module "cilium_clustermesh2" {
-  source          = "./modules/cilium-clustermesh"
-  cluster_name    = var.kind.mesh2.name
-  cluster_id      = var.cilium.mesh2.cluster_id
-  release_version = var.cilium.mesh2.version
-  service_type    = "NodePort"
-  extra_set       = ["tls.ca.cert=${local.cert}", "tls.ca.key=${local.key}"]
-
-  providers = {
-    cilium = cilium.mesh["mesh2"]
+    cilium = cilium.mesh[each.key]
   }
 
   depends_on = [module.kind]
@@ -46,7 +27,6 @@ resource "cilium_clustermesh_connection" "this" {
   destination_contexts = ["kind-${var.kind.mesh2.name}"]
   provider             = cilium.mesh["mesh1"]
   depends_on = [
-    module.cilium_clustermesh1,
-    module.cilium_clustermesh2,
+    module.cilium_clustermesh,
   ]
 }

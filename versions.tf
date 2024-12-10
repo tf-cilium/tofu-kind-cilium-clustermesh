@@ -16,6 +16,6 @@ provider "kind" {}
 
 provider "cilium" {
   alias    = "mesh"
-  for_each = toset(keys(var.cilium))
+  for_each = toset(keys(var.kind))
   context  = module.kind[each.key].context
 }
