@@ -25,15 +25,20 @@ provider "registry.opentofu.org/littlejo/cilium" {
 }
 
 provider "registry.opentofu.org/tehcyx/kind" {
-  version     = "0.5.1"
-  constraints = "0.5.1"
+  version     = "0.7.0"
+  constraints = "0.7.0"
   hashes = [
-    "h1:ji9MdwDXjdaTABedho33+2Xkxpk15j4XFbR/lXecfcA=",
-    "zh:0ac1fa0b309ed577e8e625de76895076d4b4d269703a6904ceb381584e052e33",
-    "zh:54eae54f9094a9c4084a7a41f3d7e6f6df7526c3d43347cce2dce19ba4c21265",
-    "zh:60dc0a1e15356ce900b20ccca06edf96828df9d5fb9d6b3723404b203e6258b0",
-    "zh:8197dd640596ebb8a00de1eaaeae1dba2040084f542821e53c1a9386c84ff7f7",
-    "zh:b0e029e625ea7b80fe7727430db80561a9bb8ee299b007f9cffbdf42ef4e2965",
-    "zh:ea2a900590cca200f18130d18867ff3c5b095712366c590c70b6b69788e3723b",
+    "h1:5wA0tLAZKpM5se4ueSE5gg4Vp5K70FWa4LD1wS097CE=",
+    "h1:96agCjczubBfNWmVzmgXidLD1C8A2avl2yeDVv9Z2P0=",
+    "h1:9ci1+3JBxvMRZ0pnzoVNmw7NrBCAfzqOPyhm+I8Rxag=",
+    "h1:BNEWJ83uUIMsCUvCNDu/WESe36hznXz32ny160qeWYs=",
+    "h1:DQhPGmImyxrUvlWEaVQbipIJkL4WPYklYt3XRofuH4o=",
+    "h1:nFhFHmE5+dCd9S9dEMwnMNWzyxoVipYobkhXYoDbhgA=",
+    "zh:171a2fb0137bfbdebd56cd65afd2e0e2167315fe4cb6a07a218db40cb17339c3",
+    "zh:3260b078b7997ddfd03845326ffaeed7f678eeaaf7918430356f22e299e36f22",
+    "zh:4066ab3feb482a0dd1bfff6590d89a0ec30478f63c9d8253cfdadb4b8db2234d",
+    "zh:537af73261d53f4840d1f89d8e5835c52ddb97102e6314f6aea9b8e49c43d610",
+    "zh:d63e94d828ba0339600d992b0a6695cff939b0aaac1c39b31d38e3c4f3823674",
+    "zh:f971c617bf6b37d07a5042f13a9ab02b42d0ceb14934174eecc81abeec233c40",
   ]
 }
