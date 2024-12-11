@@ -20,7 +20,8 @@ module "kind" {
 }
 
 module "cilium_clustermesh" {
-  source          = "./modules/cilium-clustermesh"
+  source = "./modules/cilium-clustermesh"
+
   for_each        = local.clusters
   cluster_name    = each.value.name
   cluster_id      = each.value.cluster_id
