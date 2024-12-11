@@ -5,7 +5,7 @@
 |------|---------|
 | <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | >= 1.9 |
 | <a name="requirement_cilium"></a> [cilium](#requirement\_cilium) | ~> 0.2.0 |
-| <a name="requirement_kind"></a> [kind](#requirement\_kind) | 0.5.1 |
+| <a name="requirement_kind"></a> [kind](#requirement\_kind) | 0.7.0 |
 
 ## Providers
 
@@ -17,8 +17,7 @@
 
 | Name | Source | Version |
 |------|--------|---------|
-| <a name="module_cilium_clustermesh1"></a> [cilium\_clustermesh1](#module\_cilium\_clustermesh1) | ./modules/cilium-clustermesh | n/a |
-| <a name="module_cilium_clustermesh2"></a> [cilium\_clustermesh2](#module\_cilium\_clustermesh2) | ./modules/cilium-clustermesh | n/a |
+| <a name="module_cilium_clustermesh"></a> [cilium\_clustermesh](#module\_cilium\_clustermesh) | ./modules/cilium-clustermesh | n/a |
 | <a name="module_kind"></a> [kind](#module\_kind) | ./modules/kind | n/a |
 
 ## Resources
@@ -31,8 +30,12 @@
 
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
-| <a name="input_cilium"></a> [cilium](#input\_cilium) | n/a | `map(any)` | <pre>{<br>  "mesh1": {<br>    "cluster_id": 1,<br>    "version": "1.14.4"<br>  },<br>  "mesh2": {<br>    "cluster_id": 2,<br>    "version": "1.14.4"<br>  }<br>}</pre> | no |
-| <a name="input_kind"></a> [kind](#input\_kind) | n/a | `map(any)` | <pre>{<br>  "mesh1": {<br>    "extra_port_mappings": [<br>      {<br>        "container_port": 32042,<br>        "host_port": 32042<br>      },<br>      {<br>        "container_port": 31234,<br>        "host_port": 31234<br>      },<br>      {<br>        "container_port": 31235,<br>        "host_port": 31235<br>      }<br>    ],<br>    "name": "clustermesh1",<br>    "pod_subnet": "10.1.0.0/16",<br>    "service_subnet": "172.20.1.0/24"<br>  },<br>  "mesh2": {<br>    "extra_port_mappings": [],<br>    "name": "clustermesh2",<br>    "pod_subnet": "10.2.0.0/16",<br>    "service_subnet": "172.20.2.0/24"<br>  }<br>}</pre> | no |
+| <a name="input_cilium"></a> [cilium](#input\_cilium) | n/a | `map` | <pre>{<br>  "clustermesh": {<br>    "service_type": "NodePort"<br>  },<br>  "version": "1.16.4"<br>}</pre> | no |
+| <a name="input_cluster_name_prefix"></a> [cluster\_name\_prefix](#input\_cluster\_name\_prefix) | n/a | `string` | `"clustermesh"` | no |
+| <a name="input_clusters_number"></a> [clusters\_number](#input\_clusters\_number) | n/a | `number` | `3` | no |
+| <a name="input_nodes_number"></a> [nodes\_number](#input\_nodes\_number) | n/a | `number` | `2` | no |
+| <a name="input_pod_base"></a> [pod\_base](#input\_pod\_base) | n/a | `string` | `"10.0.0.0/8"` | no |
+| <a name="input_service_base"></a> [service\_base](#input\_service\_base) | n/a | `string` | `"172.20.0.0/16"` | no |
 
 ## Outputs
 
